@@ -10,6 +10,9 @@
 		<button type="submit">Get info</button>
 	</form>
 
+
+	<h1 id="result"></h1>
+
 	<script>
 		const electron = require('electron');
 		const { ipcRenderer } = electron;
@@ -17,9 +20,16 @@
 		document.querySelector('form').addEventListener('submit', (event) => {
 			event.preventDefault();
 			const { path } = document.querySelector('input').files[0];
-			// send message
+			// send message 'video:submit' to Electron App
 			ipcRenderer.send('video:submit', path);
 		});
+
+		// watch for video:metadata from Electron App
+		icpRender.on('video:metadata', (event, duration) => {
+			// display info on page 
+			document.querySelector('#result').innerHTML = `Video is ${duration} seconds`;
+		});
+
 	</script>
 </body>
 
