@@ -9,7 +9,7 @@ let mainWindow;
 app.on('ready', () => {
 	// make new window
 	mainWindow = new BrowserWindow({}); 
-	// load window
+	// load index document to window
 	mainWindow.loadURL(`file://${__dirname}/index.html`); 
 });
 
