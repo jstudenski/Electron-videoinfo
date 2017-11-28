@@ -25,7 +25,7 @@
 		});
 
 		// watch for video:metadata from Electron App
-		icpRender.on('video:metadata', (event, duration) => {
+		ipcRenderer.on('video:metadata', (event, duration) => {
 			// display info on page 
 			document.querySelector('#result').innerHTML = `Video is ${duration} seconds`;
 		});
